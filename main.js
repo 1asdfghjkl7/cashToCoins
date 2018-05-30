@@ -1,37 +1,46 @@
-let dollarAmount = 2.25
 let piggyBank = {};
+let quarters = 0;
+let dimes = 0;
+let nickels = 0;
+let pennies = 0;
+
+let moneyFunction = (dollarAmount) => {
+    dollarAmount = Math.round(dollarAmount * 100)
+    while ((dollarAmount % 25) >= 0 && dollarAmount >= 25) {
+        dollarAmount -= 25
+        quarters++
+    }
+    
+    while ((dollarAmount % 10) >= 0 && dollarAmount >= 10) {
+        dollarAmount -= 10
+        dimes++
+    }
+
+    while ((dollarAmount % 5) >= 0 && dollarAmount >= 5) {
+        dollarAmount -= 5
+        nickels++
+    }
+
+    while (dollarAmount > 0) {
+        dollarAmount -= 1
+        pennies++
+    }
+
+    piggyBank["quarters"] = quarters;
+    
+    piggyBank["dimes"] = dimes;
+    
+    piggyBank["nickels"] = nickels;
+    
+    piggyBank["pennies"] = pennies;
+    console.log(piggyBank);
+    console.log(dollarAmount);
+    
+}
 
 
-//make if statement running through each coin and updating dollarAmountRemaining until it = 0 then logging piggyBank. log piggyBank through each coin statement to make sure code is working.
-
-let qRemain = dollarAmount % 0.25; //gets remainder of dollarAmount if divided with quarters
-let dividedAmount = dollarAmount - qRemain; //gets dollarAmount and subtracts above value to return the amount successfully divided by 25
-let quarters = dividedAmount / 0.25;           //gets amount above and divides it by 25 giving you the amount of quarters used
-let dollarAmountRemaining = qRemain; //gets the remaining money to be converted
-
-piggyBank["quarters"] = quarters;
-
-let dRemain = dollarAmount % 0.10;
-dividedAmount = dollarAmountRemaining - dRemain;
-let dimes = dividedAmount / 0.10;
-dollarAmountRemaining = dRemain;
-
-piggyBank["dimes"] = dimes;
 
 
-let nRemain = dollarAmount % 0.05;
-dividedAmount = dollarAmountRemaining - nRemain;
-let nickels = dividedAmount / 0.05;
-dollarAmountRemaining = nRemain;
-
-piggyBank["nickels"] = nickels;
-
-
-let pRemain = dollarAmount % 0.01;
-dividedAmount = dollarAmountRemaining - pRemain;
-let pennies = dividedAmount / 0.01;
-dollarAmountRemaining = pRemain;
-
-piggyBank["pennies"] = pennies;
-
-console.log(piggyBank);
+moneyFunction(1.16);
+moneyFunction(74.69);
+moneyFunction(1);
