@@ -1,11 +1,11 @@
 let piggyBank = {};
-let quarters = 0;
-let dimes = 0;
-let nickels = 0;
-let pennies = 0;
 
 let moneyFunction = (dollarAmount) => {
     dollarAmount = Math.round(dollarAmount * 100)
+    let quarters = 0;
+    let dimes = 0;
+    let nickels = 0;
+    let pennies = 0;
     while ((dollarAmount % 25) >= 0 && dollarAmount >= 25) {
         dollarAmount -= 25
         quarters++
